@@ -1,6 +1,9 @@
 export const theme = {
     "colors": {
         "primary": "rgb(255, 181, 157)",
+        "background": '#151715',
+        "text": '#C54F01',
+        "cardBackground": '#262626',
         "onPrimary": "rgb(93, 24, 0)",
         "primaryContainer": "rgb(132, 37, 0)",
         "onPrimaryContainer": "rgb(255, 219, 208)",
@@ -13,10 +16,9 @@ export const theme = {
         "tertiaryContainer": "rgb(0, 71, 132)",
         "onTertiaryContainer": "rgb(212, 227, 255)",
         "error": "rgb(255, 180, 171)",
-        "onError": "rgb(105, 0, 5)",
+        "onError": '#D71212',
         "errorContainer": "rgb(147, 0, 10)",
         "onErrorContainer": "rgb(255, 180, 171)",
-        "background": "rgb(32, 26, 24)",
         "onBackground": "rgb(237, 224, 220)",
         "surface": "rgb(32, 26, 24)",
         "onSurface": "rgb(237, 224, 220)",
@@ -40,5 +42,15 @@ export const theme = {
         "surfaceDisabled": "rgba(237, 224, 220, 0.12)",
         "onSurfaceDisabled": "rgba(237, 224, 220, 0.38)",
         "backdrop": "rgba(59, 45, 41, 0.4)"
+    },
+    "spacing": {
+        small: 8,
+        medium: 16,
+        large: 24,
+    },
+    "borderRadius": {
+        small: 4,
+        medium: 8,
+        large: 12,
     }
 }

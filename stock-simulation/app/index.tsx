@@ -93,7 +93,7 @@ const Index = () => {
             </View>
 
             {/* News Section */}
-            <View style={styles.card}>
+            <View style={styles.news}>
                 <Text style={styles.sectionTitle}>News</Text>
                 {/* Placeholder for future content */}
             </View>

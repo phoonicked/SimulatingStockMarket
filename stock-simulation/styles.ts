@@ -1,35 +1,46 @@
 import {StyleSheet} from "react-native";
+import {theme} from "@/theme";
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1c1c1c',
-        padding: 20,
+        backgroundColor: theme.colors.background,
+        padding: theme.spacing.medium,
     },
     topSection: {
-        flex: 1,
-        backgroundColor: '#292929',
-        borderRadius: 16,
-        marginBottom: 20,
+        flex: 0.3,
+        backgroundColor: theme.colors.cardBackground,
+        borderRadius: theme.borderRadius.medium,
+        marginBottom: theme.spacing.medium,
+        marginHorizontal: theme.spacing.small,
     },
     card: {
-        backgroundColor: '#292929',
-        borderRadius: 16,
-        padding: 20,
-        marginBottom: 20,
+        backgroundColor: theme.colors.cardBackground,
+        borderRadius: theme.borderRadius.medium,
+        padding: theme.spacing.medium,
+        marginBottom: theme.spacing.medium,
+        marginHorizontal: theme.spacing.small,
+    },
+    news: {
+        flex: 0.7,
+        backgroundColor: theme.colors.cardBackground,
+        borderRadius: theme.borderRadius.medium,
+        padding: theme.spacing.medium,
+        marginBottom: theme.spacing.medium,
+        marginHorizontal: theme.spacing.small,
     },
     sectionTitle: {
         color: '#ffffff',
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: theme.spacing.small,
     },
     input: {
         backgroundColor: '#333333',
         color: '#ffffff',
-        borderRadius: 8,
-        padding: 10,
-        marginBottom: 10,
+        borderRadius: theme.borderRadius.small,
+        padding: theme.spacing.small,
+        marginBottom: theme.spacing.small,
     },
     symbol: {
         fontSize: 20,
@@ -38,9 +49,9 @@ export const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        color: '#ffffff',
+        color: theme.colors.text,
     },
     errorText: {
-        color: 'red',
+        color: theme.colors.onError,
     },
 });
