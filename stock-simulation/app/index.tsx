@@ -2,8 +2,6 @@ import { Text, View, StyleSheet, ActivityIndicator, SafeAreaView, Button  } from
 import React, { useState, useEffect } from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { getDailyOpenCloseData } from "@/app/services/polygon-service";
-import {Is} from "@sinclair/typebox/value/is";
-import Date = Is.Date;
 
 const Index = () => {
     const [stockData, setStockData] = useState<any>(null);
@@ -32,6 +30,10 @@ const Index = () => {
         fetchData(date);
     }
 
+    const currentDate = new Date();
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(currentDate.getFullYear() - 1);
+
     return (
         <SafeAreaView style={styles.container}>
             {loading ? (
@@ -59,6 +61,8 @@ const Index = () => {
                 mode="date"
                 onConfirm={handleDateConfirm}
                 onCancel={() => setDatePickerVisibility(false)}
+                maximumDate={currentDate}
+                minimumDate={oneYearAgo}
             />
         </SafeAreaView>
     );

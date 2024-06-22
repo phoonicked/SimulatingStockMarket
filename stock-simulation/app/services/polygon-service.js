@@ -14,7 +14,7 @@ export const getDailyOpenCloseData = async (symbol, date) => {
         // console.log('API response: ', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error fethcing stock data', error);
+        console.error('Error fetching stock data', error);
         throw error;
     }
 };
