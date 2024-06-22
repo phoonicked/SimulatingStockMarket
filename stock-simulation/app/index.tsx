@@ -13,6 +13,7 @@ const Index = () => {
 
     const fetchData = async (ticker: string, date: Date) => {
         setLoading(true);
+        setError(null);
         try {
             const year = date.getFullYear();
             const month = (`0${date.getMonth() + 1}`).slice(-2);
@@ -24,6 +25,7 @@ const Index = () => {
         } catch (err) {
             console.error('Error: ', err);
             setError(err as Error);
+            setStockData(null);
         } finally {
             setLoading(false);
         }
