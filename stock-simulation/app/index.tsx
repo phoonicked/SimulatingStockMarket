@@ -14,7 +14,10 @@ const Index = () => {
     const fetchData = async (ticker: string, date: Date) => {
         setLoading(true);
         try {
-            const formattedDate = date.toISOString().split('T')[0];
+            const year = date.getFullYear();
+            const month = (`0${date.getMonth() + 1}`).slice(-2);
+            const day = (`0${date.getDate()}`).slice(-2);
+            const formattedDate = `${year}-${month}-${day}`;
             // console.log('Fetching data for: ', ticker); // Debug stock ticker
             const data = await getDailyOpenCloseData(ticker, formattedDate);
             setStockData(data);
@@ -26,10 +29,14 @@ const Index = () => {
         }
     };
 
-    const handleDateConfirm = (date: Date) => {
+    const handleConfirm = (date: Date) => {
         setDatePickerVisibility(false);
         setSelectedDate(date);
         fetchData(stockTicker, date);
+    }
+
+    const handleTickerChange = (ticker: string) => {
+        setStockTicker(ticker);
     }
 
     const currentDate = new Date();
@@ -42,7 +49,7 @@ const Index = () => {
                 style={styles.input}
                 placeholder={"Enter Stock Ticker"}
                 value={stockTicker}
-                onChangeText={setStockTicker}
+                onChangeText={handleTickerChange}
             />
             {loading ? (
                 <Text style={styles.text}>Loading...</Text>
@@ -67,7 +74,7 @@ const Index = () => {
             <DateTimePickerModal
                 isVisible={datePickerVisibility}
                 mode="date"
-                onConfirm={handleDateConfirm}
+                onConfirm={handleConfirm}
                 onCancel={() => setDatePickerVisibility(false)}
                 maximumDate={currentDate}
                 minimumDate={oneYearAgo}
