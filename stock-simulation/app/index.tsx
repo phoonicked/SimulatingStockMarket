@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ActivityIndicator, SafeAreaView, Button  } from "react-native";
+import {Text, View, StyleSheet, ActivityIndicator, SafeAreaView, Button, TextInput} from "react-native";
 import React, { useState, useEffect } from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { getDailyOpenCloseData } from "@/app/services/polygon-service";
@@ -9,12 +9,14 @@ const Index = () => {
     const [error, setError] = useState<Error | null>(null);
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [datePickerVisibility, setDatePickerVisibility] = useState(false);
+    const [stockTicker, setStockTicker] = useState<string>('AAPL');
 
-    const fetchData = async (date: Date) => {
+    const fetchData = async (ticker: string, date: Date) => {
         setLoading(true);
         try {
             const formattedDate = date.toISOString().split('T')[0];
-            const data = await getDailyOpenCloseData('AAPL', formattedDate);
+            // console.log('Fetching data for: ', ticker); // Debug stock ticker
+            const data = await getDailyOpenCloseData(ticker, formattedDate);
             setStockData(data);
         } catch (err) {
             console.error('Error: ', err);
@@ -27,7 +29,7 @@ const Index = () => {
     const handleDateConfirm = (date: Date) => {
         setDatePickerVisibility(false);
         setSelectedDate(date);
-        fetchData(date);
+        fetchData(stockTicker, date);
     }
 
     const currentDate = new Date();
@@ -36,6 +38,12 @@ const Index = () => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <TextInput
+                style={styles.input}
+                placeholder={"Enter Stock Ticker"}
+                value={stockTicker}
+                onChangeText={setStockTicker}
+            />
             {loading ? (
                 <Text style={styles.text}>Loading...</Text>
             ) : error ? (
@@ -74,6 +82,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
+    },
+    input: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        paddingHorizontal: 10,
+        marginBottom: 20,
+        color: '#fff',
     },
     symbol: {
         fontSize: 20,
