@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     },
     sectionTitle: {
         color: '#ffffff',
-        fontSize: 20,
+        fontSize: theme.fonts.large,
         fontWeight: 'bold',
         marginBottom: theme.spacing.small,
     },
@@ -43,12 +43,12 @@ export const styles = StyleSheet.create({
         marginBottom: theme.spacing.small,
     },
     symbol: {
-        fontSize: 20,
+        fontSize: theme.fonts.large,
         fontWeight: 'bold',
         color: '#ffffff',
     },
     text: {
-        fontSize: 16,
+        fontSize: theme.fonts.regular,
         color: theme.colors.text,
     },
     errorText: {

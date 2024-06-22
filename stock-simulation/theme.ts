@@ -52,5 +52,10 @@ export const theme = {
         small: 4,
         medium: 8,
         large: 12,
+    },
+    "fonts": {
+        regular: 16,
+        large: 20,
+        extraLarge: 24,
     }
 }
