@@ -13,10 +13,10 @@ const RootLayout = () => {
 
                         if (route.name === 'index') {
                             iconName = focused ? 'home' : 'home-outline';
-                        } else if (route.name === 'settings') {
-                            iconName = focused ? 'settings' : 'settings-outline';
                         } else if (route.name === 'news') {
                             iconName = focused ? 'newspaper' : 'newspaper-outline';
+                        } else if (route.name === 'settings') {
+                            iconName = focused ? 'settings' : 'settings-outline';
                         }
 
                         return <Ionicons name={iconName} size={size} color={color} />;
@@ -29,7 +29,7 @@ const RootLayout = () => {
                     },
                 })}
             >
-                <Tabs.Screen name="index" />
+                <Tabs.Screen name="index" options={{ title: 'Home' }} />
                 <Tabs.Screen name="news" options={{ title: 'News' }} />
                 <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
             </Tabs>
