@@ -3,18 +3,19 @@ import React, { useState, useEffect } from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { getDailyOpenCloseData } from "@/app/services/polygon-service";
 import {styles} from "@/styles";
+import axios from "axios";
 
 const Index = () => {
     const [stockData, setStockData] = useState<any>(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [datePickerVisibility, setDatePickerVisibility] = useState(false);
     const [stockTicker, setStockTicker] = useState<string>('AAPL');
+    const [noData, setNoData] = useState(false);const [fetchAttempted, setFetchAttempted] = useState(false);
 
     const fetchData = async (ticker: string, date: Date) => {
-        setLoading(true);
         setError(null);
+        setNoData(false);
         try {
             const year = date.getFullYear();
             const month = (`0${date.getMonth() + 1}`).slice(-2);
@@ -24,11 +25,16 @@ const Index = () => {
             const data = await getDailyOpenCloseData(ticker, formattedDate);
             setStockData(data);
         } catch (err) {
-            console.error('Error: ', err);
-            setError(err as Error);
+            if(axios.isAxiosError(err)) {
+                if(err.response && err.response.status === 404) {
+                    setNoData(true);
+                } else {
+                    setError(err as Error);
+                }
+            } else {
+                setError(new Error('An unexpected error occurred'));
+            }
             setStockData(null);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -63,11 +69,11 @@ const Index = () => {
                 <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
                     <Text style={styles.input}>{selectedDate ? selectedDate.toDateString() : 'Select Date'}</Text>
                 </TouchableOpacity>
-                {loading ? (
-                    <Text style={styles.text}>Loading...</Text>
-                ) : error ? (
-                    <Text style={styles.errorText}>Error fetching data: {error.message}</Text>
-                ) : stockData ? (
+                {error ? (
+                        <Text style={styles.errorText}>Error fetching data: {error.message}</Text>
+                ) : noData ? (
+                        <Text style={styles.errorText}>No data available. Please change ticker or change date.</Text>
+                ): stockData ? (
                     <View>
                         <Text style={styles.symbol}>Symbol: {stockData.symbol}</Text>
                         <Text style={styles.text}>Date: {stockData.from}</Text>
@@ -79,9 +85,7 @@ const Index = () => {
                         <Text style={styles.text}>After Hours: {stockData.afterHours}</Text>
                         <Text style={styles.text}>Pre Market: {stockData.preMarket}</Text>
                     </View>
-                ) : (
-                    <Text style={styles.text}>No data available. Please select a date.</Text>
-                )}
+                ): null }
                 <DateTimePickerModal
                     isVisible={datePickerVisibility}
                     mode="date"
