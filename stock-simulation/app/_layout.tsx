@@ -17,6 +17,8 @@ const RootLayout = () => {
                             iconName = focused ? 'newspaper' : 'newspaper-outline';
                         } else if (route.name === 'settings') {
                             iconName = focused ? 'settings' : 'settings-outline';
+                        } else if (route.name === 'portfolio') {
+                            iconName = focused ? 'pie-chart' : 'pie-chart-outline';
                         }
 
                         return <Ionicons name={iconName} size={size} color={color} />;
@@ -32,6 +34,7 @@ const RootLayout = () => {
                 <Tabs.Screen name="index" options={{ title: 'Home' }} />
                 <Tabs.Screen name="news" options={{ title: 'News' }} />
                 <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
+                <Tabs.Screen name="portfolio" options={{ title: 'Portfolio' }} />
             </Tabs>
         </SafeAreaProvider>
     );
