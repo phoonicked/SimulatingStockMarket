@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import { styles } from '@/styles';
 
-const NewsScreen = () => {
+const newsScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -11,4 +11,4 @@ const NewsScreen = () => {
     );
 };
 
-export default NewsScreen;
+export default newsScreen;

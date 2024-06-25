@@ -1,13 +1,16 @@
 export const theme = {
     "colors": {
-        "primary": "rgb(255, 181, 157)",
+        "primary": '#C54F01',
+        "secondary": '#FEB483',
+        "blackText": '#000',
+        "whiteText": '#FFF',
         "background": '#151715',
         "text": '#C54F01',
+        "subtitle": '#888',
         "cardBackground": '#262626',
         "onPrimary": "rgb(93, 24, 0)",
         "primaryContainer": "rgb(132, 37, 0)",
         "onPrimaryContainer": "rgb(255, 219, 208)",
-        "secondary": "rgb(177, 198, 255)",
         "onSecondary": "rgb(0, 44, 112)",
         "secondaryContainer": "rgb(27, 67, 143)",
         "onSecondaryContainer": "rgb(217, 226, 255)",
@@ -47,15 +50,18 @@ export const theme = {
         small: 8,
         medium: 16,
         large: 24,
+        extraLarge: 32,
     },
     "borderRadius": {
         small: 4,
         medium: 8,
         large: 12,
+        extraLarge: 24,
     },
     "fonts": {
         regular: 16,
         large: 20,
         extraLarge: 24,
+        titleLarge: 32,
     }
 }
