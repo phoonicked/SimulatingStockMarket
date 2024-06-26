@@ -13,7 +13,7 @@ To set up and run this project, follow these steps:
    npm install
 
 3. **Add an API Key from Polygon.io:**
-   This project requires an API key from (Polygon.io)[https://polygon.io/] to fetch stock data.
+   This project requires an API key from [Polygon.io](https://polygon.io/) to fetch stock data.
 
    * Sign up at Polygon.io and obtain API key.
    * Create a file named .env in the stock-simulation directory.
