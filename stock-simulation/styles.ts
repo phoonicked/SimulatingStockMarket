@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
         marginBottom: theme.spacing.small,
         width: '80%',
         alignSelf: 'center',
-        shadowColor: '#000',
+        shadowColor: theme.colors.shadow,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 2,
@@ -96,12 +96,22 @@ export const styles = StyleSheet.create({
     createButtonText: {
         color: theme.colors.text,
     },
+    orTextContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: theme.spacing.small,
+    },
     orText: {
-        marginTop: theme.spacing.large,
         color: theme.colors.subtitle,
         fontSize: theme.fonts.regular,
-        marginBottom: theme.spacing.medium,
-        alignSelf: 'center',
+        marginHorizontal: theme.spacing.small,
+        textAlignVertical: 'center',
+    },
+    orTextLine: {
+        flex: 0.3,
+        height: 1,
+        backgroundColor: theme.colors.subtitle,
     },
     socialContainer: {
         flexDirection: 'row',
