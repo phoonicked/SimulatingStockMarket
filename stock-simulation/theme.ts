@@ -57,6 +57,7 @@ export const theme = {
         medium: 8,
         large: 12,
         extraLarge: 24,
+        theRounderTheButtonTheBetter: 40,
     },
     "fonts": {
         regular: 16,

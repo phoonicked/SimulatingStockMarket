@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: theme.colors.background,
         padding: theme.spacing.medium,
+        justifyContent: 'center',
     },
     topSection: {
         flex: 0.3,
@@ -115,14 +116,18 @@ export const styles = StyleSheet.create({
     },
     socialContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
     },
     socialButton: {
+        borderWidth: 1,
         backgroundColor: theme.colors.primaryContainer,
-        borderRadius: theme.borderRadius.medium,
+        borderRadius: theme.borderRadius.extraLarge,
         padding: theme.spacing.small,
         alignItems: 'center',
         justifyContent: 'center',
+        width: 100,
+        height: 60,
+        marginHorizontal: theme.spacing.medium,
     },
     socialIcon: {
         width: 24,
