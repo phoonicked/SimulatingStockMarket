@@ -11,7 +11,7 @@ const Index = () => {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [datePickerVisibility, setDatePickerVisibility] = useState(false);
     const [stockTicker, setStockTicker] = useState<string>('AAPL');
-    const [noData, setNoData] = useState(false);const [fetchAttempted, setFetchAttempted] = useState(false);
+    const [noData, setNoData] = useState(false);
 
     const fetchData = async (ticker: string, date: Date) => {
         setError(null);
@@ -26,13 +26,19 @@ const Index = () => {
             setStockData(data);
         } catch (err) {
             if(axios.isAxiosError(err)) {
-                if(err.response && err.response.status === 404) {
-                    setNoData(true);
+                if(err.response) {
+                    if(err.response.status === 404) {
+                        setNoData(true);
+                    } else if(err.response.status === 401) {
+                        setError(new Error('API key is not provided or invalid.'));
+                    } else {
+                        setError(new Error(err.response.data.message || 'An error occurred while fetching data.'));
+                    }
                 } else {
-                    setError(err as Error);
+                    setError(new Error('An error occurred while fetching data.'));
                 }
             } else {
-                setError(new Error('An unexpected error occurred'));
+                setError(new Error('An unexpected error occurred.'));
             }
             setStockData(null);
         }
