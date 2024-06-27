@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import * as Google from 'expo-auth-session/providers/google';
-import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { Platform } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 

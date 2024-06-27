@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, Pressable } from "react-native";
 import { styles } from "@/styles";
-import { useAuth } from "@/app/contexts/authContext";
+import { useAuth } from "@/app/contexts/AuthContext";
 
 const welcomeScreen = ({ navigation }: any) => {
     const { signIn } = useAuth()
