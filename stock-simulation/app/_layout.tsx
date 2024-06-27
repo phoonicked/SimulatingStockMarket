@@ -1,59 +1,32 @@
 import React from 'react';
-import { Tabs } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AuthProvider, useAuth } from '@/app/contexts/AuthContext';
-import Welcome from '@/app/welcome';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import MainTabs from './navigation/MainTabs';
+import WelcomeScreen from './screens/welcome';
+
+const Stack = createStackNavigator();
 
 const RootLayout = () => {
+    const { user } = useAuth();
+
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {user ? (
+                <Stack.Screen name="navigation/MainTabs" component={MainTabs} />
+            ) : (
+                <Stack.Screen name="screens/index" component={WelcomeScreen} />
+            )}
+        </Stack.Navigator>
+    );
+};
+
+const LayoutWrapper = () => {
     return (
         <AuthProvider>
-            <SafeAreaProvider>
-                <AppNavigator />
-            </SafeAreaProvider>
+            <RootLayout />
         </AuthProvider>
     );
 };
 
-const AppNavigator = () => {
-    const { user } = useAuth();
-
-    if (!user) {
-        return <Welcome />;
-    }
-
-    return (
-        <Tabs
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                    let iconName: keyof typeof Ionicons.glyphMap | undefined;
-
-                    if (route.name === 'index') {
-                        iconName = focused ? 'home' : 'home-outline';
-                    } else if (route.name === 'news') {
-                        iconName = focused ? 'newspaper' : 'newspaper-outline';
-                    } else if (route.name === 'settings') {
-                        iconName = focused ? 'settings' : 'settings-outline';
-                    } else if (route.name === 'portfolio') {
-                        iconName = focused ? 'pie-chart' : 'pie-chart-outline';
-                    }
-
-                    return <Ionicons name={iconName} size={size} color={color} />;
-                },
-                tabBarActiveTintColor: 'tomato',
-                tabBarInactiveTintColor: 'gray',
-                tabBarStyle: {
-                    backgroundColor: '#292929',
-                    borderTopColor: 'transparent',
-                },
-            })}
-        >
-            <Tabs.Screen name="index" options={{ title: 'Home' }} />
-            <Tabs.Screen name="news" options={{ title: 'News' }} />
-            <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
-            <Tabs.Screen name= "portfolio" options={{ title: 'Portfolio' }} />
-        </Tabs>
-    );
-};
-
-export default RootLayout;
+export default LayoutWrapper;
