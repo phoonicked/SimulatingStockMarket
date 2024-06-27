@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
+    "platforms": ["ios", "android", "web"],
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -14,7 +15,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.shoppingList"
+      "bundleIdentifier": "com.myapp",
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": ["com.googleusercontent.apps.1054031533304-hudflhrvuckfup870i6r2qtlmba236c2"]
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {

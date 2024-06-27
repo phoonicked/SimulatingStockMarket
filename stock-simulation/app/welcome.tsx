@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "@/styles";
-import { useGoogleAuth } from './services/google-auth';
+import { useAuth } from "@/app/contexts/authContext";
 
 const welcomeScreen = ({ navigation }: any) => {
-    const { request, promptAsync } = useGoogleAuth();
+    const { signIn } = useAuth()
 
     return (
         <View style={styles.container}>
@@ -28,7 +28,7 @@ const welcomeScreen = ({ navigation }: any) => {
                 <TouchableOpacity style={styles.socialButton}>
                     <Image source={require('../assets/images/apple.png')} style={styles.socialIcon} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.socialButton} disabled={!request} onPress={() => promptAsync()}>
+                <TouchableOpacity style={styles.socialButton} onPress={ signIn }>
                     <Image source={require('../assets/images/google.png')} style={styles.socialIcon} />
                 </TouchableOpacity>
             </View>
