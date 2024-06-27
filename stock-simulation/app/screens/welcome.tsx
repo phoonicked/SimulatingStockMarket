@@ -3,20 +3,20 @@ import { View, Text, Image, Pressable } from "react-native";
 import { styles } from "@/styles";
 import { useAuth } from "@/app/contexts/AuthContext";
 
-const welcomeScreen = ({ navigation }: any) => {
+const welcomeScreen = () => {
     const { signIn } = useAuth()
 
     return (
         <View style={styles.container}>
             <View style={styles.centerContent}>
-                <Image source={require('../assets/images/logo.png')} style={styles.logo} />
+                <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
                 <Text style={styles.appTitle}>Oppie</Text>
                 <Text style={styles.slogan}>All you need for market research</Text>
             </View>
-            <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
+            <Pressable style={styles.button}>
                 <Text style={styles.buttonText}>Sign in</Text>
             </Pressable>
-            <Pressable style={[styles.button, styles.createButton]} onPress={() => navigation.navigate('SignUp')}>
+            <Pressable style={[styles.button, styles.createButton]}>
                 <Text style={styles.createButtonText}>Create an account</Text>
             </Pressable>
             <View style={styles.orTextContainer}>
@@ -26,10 +26,10 @@ const welcomeScreen = ({ navigation }: any) => {
             </View>
         <View style={styles.socialContainer}>
                 <Pressable style={styles.socialButton}>
-                    <Image source={require('../assets/images/apple.png')} style={styles.socialIcon} />
+                    <Image source={require('../../assets/images/apple.png')} style={styles.socialIcon} />
                 </Pressable>
                 <Pressable style={styles.socialButton} onPress={ signIn }>
-                    <Image source={require('../assets/images/google.png')} style={styles.socialIcon} />
+                    <Image source={require('../../assets/images/google.png')} style={styles.socialIcon} />
                 </Pressable>
             </View>
         </View>
