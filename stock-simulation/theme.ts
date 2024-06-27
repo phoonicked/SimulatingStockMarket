@@ -29,7 +29,7 @@ export const theme = {
         "onSurfaceVariant": "rgb(216, 194, 188)",
         "outline": "rgb(160, 141, 135)",
         "outlineVariant": "rgb(83, 67, 63)",
-        "shadow": '#000',
+        "boxShadow": '#000',
         "scrim": "rgb(0, 0, 0)",
         "inverseSurface": "rgb(237, 224, 220)",
         "inverseOnSurface": "rgb(54, 47, 45)",

@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
         marginBottom: theme.spacing.small,
         width: '80%',
         alignSelf: 'center',
-        shadowColor: theme.colors.shadow,
+        shadowColor: theme.colors.boxShadow,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 2,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import { styles } from "@/styles";
 import { useAuth } from "@/app/contexts/authContext";
 
@@ -13,24 +13,24 @@ const welcomeScreen = ({ navigation }: any) => {
                 <Text style={styles.appTitle}>Oppie</Text>
                 <Text style={styles.slogan}>All you need for market research</Text>
             </View>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignIn')}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
                 <Text style={styles.buttonText}>Sign in</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.createButton]} onPress={() => navigation.navigate('SignUp')}>
+            </Pressable>
+            <Pressable style={[styles.button, styles.createButton]} onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.createButtonText}>Create an account</Text>
-            </TouchableOpacity>
+            </Pressable>
             <View style={styles.orTextContainer}>
                 <View style={styles.orTextLine} />
                 <Text style={styles.orText}>or continue with</Text>
                 <View style={styles.orTextLine} />
             </View>
         <View style={styles.socialContainer}>
-                <TouchableOpacity style={styles.socialButton}>
+                <Pressable style={styles.socialButton}>
                     <Image source={require('../assets/images/apple.png')} style={styles.socialIcon} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.socialButton} onPress={ signIn }>
+                </Pressable>
+                <Pressable style={styles.socialButton} onPress={ signIn }>
                     <Image source={require('../assets/images/google.png')} style={styles.socialIcon} />
-                </TouchableOpacity>
+                </Pressable>
             </View>
         </View>
     );
