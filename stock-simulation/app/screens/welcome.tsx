@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from "react-native";
 import { styles } from "@/styles";
 import { useAuth } from "@/app/contexts/AuthContext";
 
-const welcomeScreen = () => {
+const WelcomeScreen = () => {
     const { signIn, createAccount } = useAuth()
 
     return (
@@ -36,4 +36,4 @@ const welcomeScreen = () => {
     );
 };
 
-export default welcomeScreen;
+export default WelcomeScreen;

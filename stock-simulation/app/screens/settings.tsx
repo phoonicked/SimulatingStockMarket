@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import { styles } from '@/styles';
 
-const settingsScreen = () => {
+const SettingsScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -11,4 +11,4 @@ const settingsScreen = () => {
     );
 };
 
-export default settingsScreen;
+export default SettingsScreen;

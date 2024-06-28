@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import { styles } from '@/styles';
 
-const portfolioScreen = () => {
+const PortfolioScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -11,4 +11,4 @@ const portfolioScreen = () => {
     );
 };
 
-export default portfolioScreen;
+export default PortfolioScreen;
