@@ -144,4 +144,34 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    header: {
+        color: theme.colors.whiteText,
+        fontSize: theme.fonts.large,
+        marginVertical: theme.spacing.small,
+    },
+    switchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#2D2D2D',
+        padding: theme.spacing.small,
+        borderRadius: theme.spacing.small,
+        marginVertical: theme.spacing.small,
+    },
+    switchLabel: {
+        color: theme.colors.whiteText,
+        fontSize: theme.fonts.regular,
+    },
+    logOutButton: {
+        backgroundColor: '#2D2D2D',
+        padding: theme.spacing.medium,
+        borderRadius: theme.spacing.small,
+        marginTop: theme.spacing.large,
+        alignItems: 'center',
+    },
+    logOutButtonText: {
+        color: theme.colors.error,
+        fontSize: theme.fonts.regular,
+        fontWeight: 'bold',
+    },
 });
