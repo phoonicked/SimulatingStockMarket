@@ -4,7 +4,7 @@ import { styles } from "@/styles";
 import { useAuth } from "@/app/contexts/AuthContext";
 
 const welcomeScreen = () => {
-    const { signIn } = useAuth()
+    const { signIn, createAccount } = useAuth()
 
     return (
         <View style={styles.container}>
@@ -16,7 +16,7 @@ const welcomeScreen = () => {
             <Pressable style={styles.button}>
                 <Text style={styles.buttonText}>Sign in</Text>
             </Pressable>
-            <Pressable style={[styles.button, styles.createButton]}>
+            <Pressable style={[styles.button, styles.createButton]} onPress={createAccount}>
                 <Text style={styles.createButtonText}>Create an account</Text>
             </Pressable>
             <View style={styles.orTextContainer}>

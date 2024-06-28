@@ -5,10 +5,16 @@ import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
+interface User {
+    name: string;
+    email: string;
+}
+
 interface AuthContextType {
-    user: any;
+    user: User | null;
     signIn: () => void;
     signOut: () => void;
+    createAccount: () => void;
 }
 
 interface AuthProviderProps {
@@ -18,7 +24,7 @@ interface AuthProviderProps {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState<User | null>(null);
 
     const [request, response, promptAsync] = Google.useAuthRequest({
         clientId: Platform.select({
@@ -52,8 +58,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser(null);
     };
 
+    const createAccount = () => {
+        setUser({ name: 'Test', email: 'test@test.com' });
+    };
+
     return (
-        <AuthContext.Provider value={{ user, signIn, signOut }}>
+        <AuthContext.Provider value={{ user, signIn, signOut, createAccount }}>
             {children}
         </AuthContext.Provider>
     );
