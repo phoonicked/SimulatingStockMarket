@@ -6,7 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "com.example.myapp",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "plugins": [
       [
         "@react-native-google-signin/google-signin",
@@ -23,20 +27,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.myapp",
-      "infoPlist": {
-        "CFBundleURLTypes": [
-          {
-            "CFBundleURLSchemes": ["com.googleusercontent.apps.1054031533304-hudflhrvuckfup870i6r2qtlmba236c2"]
-          }
-        ]
-      }
+      "bundleIdentifier": "com.example.myapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.example.myapp"
     },
     "web": {
       "bundler": "metro",
