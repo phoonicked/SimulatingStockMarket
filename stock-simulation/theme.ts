@@ -63,6 +63,7 @@ export const theme = {
         regular: 16,
         large: 20,
         extraLarge: 24,
+        headerLarge: 28,
         titleLarge: 32,
     }
 }

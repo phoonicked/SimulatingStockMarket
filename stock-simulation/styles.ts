@@ -48,9 +48,9 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#ffffff',
     },
-    text: {
+    generalText: {
         fontSize: theme.fonts.regular,
-        color: theme.colors.text,
+        color: theme.colors.whiteText,
     },
     errorText: {
         color: theme.colors.onError,
@@ -146,8 +146,9 @@ export const styles = StyleSheet.create({
     },
     header: {
         color: theme.colors.whiteText,
-        fontSize: theme.fonts.large,
+        fontSize: theme.fonts.headerLarge,
         marginVertical: theme.spacing.small,
+        fontWeight: 'bold',
     },
     switchContainer: {
         flexDirection: 'row',
@@ -162,16 +163,44 @@ export const styles = StyleSheet.create({
         color: theme.colors.whiteText,
         fontSize: theme.fonts.regular,
     },
-    logOutButton: {
+    signOutButton: {
         backgroundColor: '#2D2D2D',
         padding: theme.spacing.medium,
         borderRadius: theme.spacing.small,
         marginTop: theme.spacing.large,
         alignItems: 'center',
     },
-    logOutButtonText: {
+    signOutButtonText: {
         color: theme.colors.error,
         fontSize: theme.fonts.regular,
         fontWeight: 'bold',
     },
+    settingsSection: {
+        marginVertical: theme.spacing.large,
+        paddingHorizontal: theme.spacing.large,
+    },
+    settingsOption: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: theme.spacing.medium,
+        paddingHorizontal: theme.spacing.medium,
+        borderBottomWidth: 1,
+        backgroundColor: theme.colors.cardBackground,
+    },
+    logOutSection: {
+        marginVertical: theme.spacing.large,
+        paddingHorizontal: theme.spacing.large,
+    },
+    settingsContainer: {
+        paddingVertical: theme.spacing.small,
+        flex: 1,
+        backgroundColor: theme.colors.background,
+        padding: theme.spacing.medium,
+    },
+    settingsGroup: {
+        backgroundColor: theme.colors.cardBackground,
+        borderRadius: theme.borderRadius.medium,
+        overflow: 'hidden',
+    }
 });
