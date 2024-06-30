@@ -107,7 +107,7 @@ export const styles = StyleSheet.create({
         color: theme.colors.subtitle,
         fontSize: theme.fonts.regular,
         marginHorizontal: theme.spacing.small,
-        textAlignVertical: 'center',
+        verticalAlign: 'middle',
     },
     orTextLine: {
         flex: 0.3,
