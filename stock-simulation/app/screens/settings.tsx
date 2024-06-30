@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Switch, Pressable, ScrollView} from 'react-native';
 import { styles } from '@/styles';
 import { useAuth } from '@/app/contexts/AuthContext';
+import {
+    checkNotificationPermissions,
+} from "@/app/services/notifications";
 
 const SettingsScreen = () => {
-    const { signOut } = useAuth();
+    const { signOut, notificationsEnabled, toggleNotifications } = useAuth();
 
     return (
         <ScrollView contentContainerStyle={styles.settingsContainer}>
@@ -12,7 +15,7 @@ const SettingsScreen = () => {
                 <Text style={styles.header}>General</Text>
                 <View style={styles.settingsGroup}>
                     <Pressable style={styles.settingsOption}>
-                        <Text style={styles.generalText}>Edit Profile</Text>
+                        <Text style={styles.generalText}>Profile</Text>
                     </Pressable>
                     <Pressable style={styles.settingsOption}>
                         <Text style={styles.generalText}>Leave feedback</Text>
@@ -35,7 +38,7 @@ const SettingsScreen = () => {
                     </Pressable>
                     <View style={styles.settingsOption}>
                         <Text style={styles.generalText}>Notifications</Text>
-                        <Switch />
+                        <Switch  value={notificationsEnabled} onValueChange={toggleNotifications} />
                     </View>
                     <Pressable style={styles.settingsOption}>
                         <Text style={styles.generalText}>Authorisations</Text>

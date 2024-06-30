@@ -29,7 +29,9 @@
           {
             "CFBundleURLSchemes": ["com.googleusercontent.apps.1054031533304-hudflhrvuckfup870i6r2qtlmba236c2"]
           }
-        ]
+        ],
+        "UIBackgroundModes": ["fetch", "remote-notification"],
+        "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
       }
     },
     "android": {

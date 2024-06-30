@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import * as Google from 'expo-auth-session/providers/google';
 import { Platform } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
+import { checkNotificationPermissions, getStoredNotificationSettings, toggleNotificationSettings } from '@/app/services/notifications';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -15,6 +16,8 @@ interface AuthContextType {
     signIn: () => void;
     signOut: () => void;
     createAccount: () => void;
+    notificationsEnabled: boolean;
+    toggleNotifications: () => void;
 }
 
 interface AuthProviderProps {
@@ -25,6 +28,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [user, setUser] = useState<User | null>(null);
+    const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
     const [request, response, promptAsync] = Google.useAuthRequest({
         clientId: Platform.select({
@@ -32,6 +36,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             web: '1054031533304-gauteo3vaco80voion2pt5m1b95cpsi1.apps.googleusercontent.com',
         }),
     });
+
+    useEffect(() => {
+        const initializeNotificationSettings = async () => {
+            const storedSetting = await getStoredNotificationSettings();
+            setNotificationsEnabled(storedSetting);
+        };
+        initializeNotificationSettings();
+    }, []);
 
     useEffect(() => {
         if (response?.type === 'success') {
@@ -62,8 +74,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser({ name: 'Test', email: 'test@test.com' });
     };
 
+    const toggleNotifications = async () => {
+        const newSetting = await toggleNotificationSettings(notificationsEnabled);
+        setNotificationsEnabled(newSetting);
+    };
+
     return (
-        <AuthContext.Provider value={{ user, signIn, signOut, createAccount }}>
+        <AuthContext.Provider value={{ user, signIn, signOut, createAccount, notificationsEnabled, toggleNotifications }}>
             {children}
         </AuthContext.Provider>
     );
